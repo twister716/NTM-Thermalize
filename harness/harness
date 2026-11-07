@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+# Golem harness CLI wrapper (Git Bash / Linux / macOS). Downloads the CLI of the Golem Core release named by
+# deps.golemcore in gradle.properties on first use, then runs it on a Java 21+ runtime.
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+VERSION="$(sed -n 's/^deps\.golemcore=//p' "$ROOT/gradle.properties" | tr -d '[:space:]')"
+JAR="$ROOT/.harness/golem-harness-$VERSION.jar"
+if [ ! -f "$JAR" ]; then
+    echo "[harness] downloading the harness CLI of Golem Core $VERSION..." >&2
+    mkdir -p "$ROOT/.harness"
+    curl -fsSL -o "$JAR.part" "https://github.com/Warfactory-Official/Golem-Core/releases/download/v$VERSION/golem-harness.jar" \
+        && mv "$JAR.part" "$JAR" || { rm -f "$JAR.part"; exit 1; }
+fi
+# Prefer a Java 21 that Gradle provisioned, then JAVA_HOME, then java on the PATH.
+JAVA_EXE=""
+for d in "$HOME"/.gradle/jdks/*21* "$USERPROFILE"/.gradle/jdks/*21*; do
+    [ -d "$d" ] || continue
+    for c in "$d/bin/java" "$d/bin/java.exe" "$d/Contents/Home/bin/java"; do
+        [ -x "$c" ] && JAVA_EXE="$c"
+    done
+done
+if [ -z "$JAVA_EXE" ] && [ -n "$JAVA_HOME" ] && [ -x "$JAVA_HOME/bin/java" ]; then JAVA_EXE="$JAVA_HOME/bin/java"; fi
+[ -z "$JAVA_EXE" ] && JAVA_EXE=java
+HARNESS_CONFIG="$ROOT/harness.json" exec "$JAVA_EXE" -jar "$JAR" "$@"

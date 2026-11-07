@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}",
+    "name": "${mod_name}",
+    "description": "${mod_description}@golem.credits@",
+    "authors": [
+        "${mod_author}"
+    ],
+    "license": "${mod_license}",
+    "environment": "*",
+    "entrypoints": {
+        "golemcore:entry": [
+            "io.github.twister716.ntmthermalize.NTMThermalizeEntry"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=${fabric_loader}",
+        "fabric-api": "*",
+        "golemcore": ">=${golemcore_floor}",
+        "hbm": ">=${hbm_floor}",
+        "toughasnails": ">=${toughasnails_floor}",
+        "minecraft": "${minecraft_range}",
+        "java": ">=${java_version}"
+    },
+    "suggests": {
+        "ntmspace": ">=${ntmspace_floor}"
+    }
+}

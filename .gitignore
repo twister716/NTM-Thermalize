@@ -1,0 +1,12 @@
+.gradle/
+build/
+versions/*/build/
+versions/*/runs/
+versions/*/logs/
+runs/
+out/
+.idea/
+*.iml
+.vscode/
+harness/out/
+.harness/

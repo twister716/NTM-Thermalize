@@ -1,0 +1,1 @@
+# Classes holding Dejson declarations (registration chains, crafting recipes), one per line, in initialisation order.
