@@ -56,7 +56,7 @@ The full set bonus in an armor tooltip lists heat retention or temperature balan
 
 | Minecraft | Loader            | Tough As Nails |
 |-----------|-------------------|----------------|
-| 26.1.2      | NeoForge / Fabric | 21.11.0.6+     |
+| 26.1      | NeoForge / Fabric | 21.11.0.6+     |
 | 1.21.1    | NeoForge / Fabric | 10.1.0.13+     |
 | 1.20.1    | Forge / Fabric    | 9.2.0.171+     |
 
@@ -88,6 +88,7 @@ The jars are written to `versions/<node>/build/release/`. Run `./gradlew "Reset 
   Mod.
 - The textures of the thermal claddings and air conditioners are derived from NTM textures. They are recolored
   versions of textures from NTM - Continuum, used under LGPL-3.0.
+- The mod icon is a recolored version of the NTM - Continuum icon, used under LGPL-3.0.
 - [Tough As Nails](https://github.com/Glitchfiend/ToughAsNails) by Glitchfiend.
 - Built with the Continuum addon template and Golem Core.
 

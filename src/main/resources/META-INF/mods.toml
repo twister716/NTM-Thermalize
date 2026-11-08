@@ -8,6 +8,7 @@ version = "${mod_version}"
 displayName = "${mod_name}"
 authors = "${mod_author}"
 description = '''${mod_description}@golem.credits@'''
+logoFile = "assets/ntmthermalize/icon.png"
 
 [[dependencies.${mod_id}]]
 modId = "forge"
