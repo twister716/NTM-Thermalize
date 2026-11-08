@@ -9,6 +9,11 @@
     ],
     "license": "${mod_license}",
     "icon": "assets/ntmthermalize/icon.png",
+    "contact": {
+        "homepage": "@golem.homepage@",
+        "sources": "@golem.sources@",
+        "issues": "@golem.issues@"
+    },
     "environment": "*",
     "entrypoints": {
         "golemcore:entry": [

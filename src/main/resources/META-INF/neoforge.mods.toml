@@ -1,6 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "${neoforge_loader_range}"
 license = "${mod_license}"
+issueTrackerURL = "@golem.issues@"
 
 [[mods]]
 modId = "${mod_id}"
@@ -9,6 +10,7 @@ displayName = "${mod_name}"
 authors = "${mod_author}"
 description = '''${mod_description}@golem.credits@'''
 logoFile = "assets/ntmthermalize/icon.png"
+displayURL = "@golem.homepage@"
 
 [[dependencies.${mod_id}]]
 modId = "neoforge"
