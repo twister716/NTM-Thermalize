@@ -48,9 +48,9 @@ public final class AirConditioning {
     }
 
     public static void toggle(ServerPlayer player) {
-        ItemStack leggings = leggings(player);
         if (!hasAirConditioner(player)) return;
 
+        ItemStack leggings = leggings(player);
         boolean turnOff = !isTurnedOff(leggings);
         if (turnOff) TURNED_OFF.set(leggings, true);
         else TURNED_OFF.remove(leggings);

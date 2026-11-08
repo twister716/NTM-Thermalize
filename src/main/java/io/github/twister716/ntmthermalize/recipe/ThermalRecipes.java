@@ -9,14 +9,9 @@ public final class ThermalRecipes {
 
     private static final String NS = NTMThermalize.MOD_ID;
 
-    private static boolean declared;
-
     private ThermalRecipes() {}
 
     public static void declare() {
-        if (declared) return;
-        declared = true;
-
         shaped(NS, "crafting/wool_insulation_cladding", NS + ":wool_insulation_cladding",
                 rows("DWD", "WPW", "DWD"),
                 "D", "hbm:ducttape", "W", "#minecraft:wool", "P", "#c:plates/iron");

@@ -22,6 +22,10 @@ import net.minecraft.world.item.Item;
 
 public final class ThermalSuits {
 
+    public static final List<EquipmentSlot> ARMOR_SLOTS = List.of(
+            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
+    );
+
     private static final List<ThermalSuit> SUITS = List.of(
             suit(ModGearItems.hazmat_helmet, ModGearItems.hazmat_plate,
                     ModGearItems.hazmat_legs, ModGearItems.hazmat_boots, sealed(DEFAULT_LIMIT)),
@@ -39,7 +43,8 @@ public final class ThermalSuits {
                     ModArmorSetItems.trenchmaster_legs, ModArmorSetItems.trenchmaster_boots, sealed(DEFAULT_LIMIT)),
 
             suit(ModArmorSetBItems.envsuit_helmet, ModArmorSetBItems.envsuit_plate,
-                    ModArmorSetBItems.envsuit_legs, ModArmorSetBItems.envsuit_boots, sealedWithAirConditioner(DEFAULT_LIMIT)),
+                    ModArmorSetBItems.envsuit_legs, ModArmorSetBItems.envsuit_boots,
+                    sealedWithAirConditioner(DEFAULT_LIMIT)),
             suit(ModArmorItems.asbestos_helmet, ModArmorItems.asbestos_plate,
                     ModArmorItems.asbestos_legs, ModArmorItems.asbestos_boots, fireProximity(2)),
             suit(ModArmorSetBItems.steamsuit_helmet, ModArmorSetBItems.steamsuit_plate,
@@ -68,10 +73,6 @@ public final class ThermalSuits {
 
             suit(ModArmorSetItems.euphemium_helmet, ModArmorSetItems.euphemium_plate,
                     ModArmorSetItems.euphemium_legs, ModArmorSetItems.euphemium_boots, euphemium())
-    );
-
-    public static final List<EquipmentSlot> ARMOR_SLOTS = List.of(
-            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
     );
 
     private ThermalSuits() {}
