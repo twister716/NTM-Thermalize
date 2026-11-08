@@ -62,9 +62,9 @@ The full set bonus in an armor tooltip lists heat retention or temperature balan
 
 All versions also need:
 
-- [NTM - Continuum](https://modrinth.com/mod/ntm-continuum)
-- Golem Core
-- Tough As Nails and its library GlitchCore
+- [NTM - Continuum](https://github.com/Warfactory-Official/NTM-Continuum)
+- [Golem Core](https://github.com/Warfactory-Official/Golem-Core)
+- [Tough As Nails](https://github.com/Glitchfiend/ToughAsNails) and its library [GlitchCore](https://github.com/Glitchfiend/GlitchCore)
 
 1.20.1 Forge needs Forge 47.3.0 or newer.
 

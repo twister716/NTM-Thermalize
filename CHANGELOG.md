@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.0
+## 1.0.0
 
-First alpha release.
+First release.
 
 - Full-body suits affect Tough As Nails body temperature, with stuffiness in sealed suits.
 - Six thermal claddings for heating and cooling.
