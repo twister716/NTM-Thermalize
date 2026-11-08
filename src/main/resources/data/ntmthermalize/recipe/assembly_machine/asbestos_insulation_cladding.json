@@ -1,0 +1,12 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.asbestos_insulation_cladding",
+  "input_items": [
+    { "ingredient": "ntmthermalize:wool_insulation_cladding" },
+    { "ingredient": "#c:ingots/asbestos", "count": 4 },
+    { "ingredient": "#c:ingots/polymer", "count": 2 }
+  ],
+  "output_items": ["ntmthermalize:asbestos_insulation_cladding"],
+  "duration": 200,
+  "power": 200
+}

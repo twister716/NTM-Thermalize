@@ -1,0 +1,16 @@
+{
+  "type": "hbm:chemical_plant",
+  "name": "chem.ntmthermalize.ferrouranium_insulation_cladding",
+  "input_items": [
+    { "ingredient": "ntmthermalize:asbestos_insulation_cladding" },
+    { "ingredient": "hbm:cladding_desh" },
+    { "ingredient": "#c:ingots/ferrouranium", "count": 2 },
+    { "ingredient": "#c:dusts/aluminium", "count": 2 }
+  ],
+  "input_fluids": [
+    { "type": "hbm:alumina", "amount": 100 }
+  ],
+  "output_items": ["ntmthermalize:ferrouranium_insulation_cladding"],
+  "duration": 200,
+  "power": 200
+}

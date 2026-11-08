@@ -1,0 +1,16 @@
+{
+  "type": "hbm:chemical_plant",
+  "name": "chem.ntmthermalize.ferrouranium_cooling_cladding",
+  "input_items": [
+    { "ingredient": "ntmthermalize:graphite_cooling_cladding" },
+    { "ingredient": "hbm:cladding_desh" },
+    { "ingredient": "#c:ingots/ferrouranium", "count": 2 },
+    { "ingredient": "#c:dusts/ice", "count": 2 }
+  ],
+  "input_fluids": [
+    { "type": "hbm:cryogel", "amount": 1000 }
+  ],
+  "output_items": ["ntmthermalize:ferrouranium_cooling_cladding"],
+  "duration": 200,
+  "power": 200
+}

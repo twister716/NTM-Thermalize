@@ -1,0 +1,12 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.graphite_cooling_cladding",
+  "input_items": [
+    { "ingredient": "ntmthermalize:copper_cooling_cladding" },
+    { "ingredient": "#c:ingots/graphite", "count": 4 },
+    { "ingredient": "#c:ingots/polymer", "count": 2 }
+  ],
+  "output_items": ["ntmthermalize:graphite_cooling_cladding"],
+  "duration": 200,
+  "power": 200
+}

@@ -1,8 +1,11 @@
 package io.github.twister716.ntmthermalize.suit;
 
 import static io.github.twister716.ntmthermalize.suit.SuitProfile.DEFAULT_LIMIT;
+import static io.github.twister716.ntmthermalize.suit.SuitProfile.euphemium;
 import static io.github.twister716.ntmthermalize.suit.SuitProfile.fireProximity;
 import static io.github.twister716.ntmthermalize.suit.SuitProfile.sealed;
+import static io.github.twister716.ntmthermalize.suit.SuitProfile.sealedWithAirConditioner;
+import static io.github.twister716.ntmthermalize.suit.SuitProfile.sealedWithEquilibriumAirConditioner;
 
 import com.hbm.items.ModArmorItems;
 import com.hbm.items.ModArmorModItems;
@@ -36,7 +39,7 @@ public final class ThermalSuits {
                     ModArmorSetItems.trenchmaster_legs, ModArmorSetItems.trenchmaster_boots, sealed(DEFAULT_LIMIT)),
 
             suit(ModArmorSetBItems.envsuit_helmet, ModArmorSetBItems.envsuit_plate,
-                    ModArmorSetBItems.envsuit_legs, ModArmorSetBItems.envsuit_boots, sealed(DEFAULT_LIMIT)),
+                    ModArmorSetBItems.envsuit_legs, ModArmorSetBItems.envsuit_boots, sealedWithAirConditioner(DEFAULT_LIMIT)),
             suit(ModArmorItems.asbestos_helmet, ModArmorItems.asbestos_plate,
                     ModArmorItems.asbestos_legs, ModArmorItems.asbestos_boots, fireProximity(2)),
             suit(ModArmorSetBItems.steamsuit_helmet, ModArmorSetBItems.steamsuit_plate,
@@ -44,7 +47,7 @@ public final class ThermalSuits {
             suit(ModArmorSetBItems.dieselsuit_helmet, ModArmorSetBItems.dieselsuit_plate,
                     ModArmorSetBItems.dieselsuit_legs, ModArmorSetBItems.dieselsuit_boots, sealed(2)),
             suit(ModArmorSetItems.hev_helmet, ModArmorSetItems.hev_plate,
-                    ModArmorSetItems.hev_legs, ModArmorSetItems.hev_boots, sealed(2)),
+                    ModArmorSetItems.hev_legs, ModArmorSetItems.hev_boots, sealedWithAirConditioner(2)),
 
             suit(ModArmorItems.t51_helmet, ModArmorItems.t51_plate,
                     ModArmorItems.t51_legs, ModArmorItems.t51_boots, sealed(DEFAULT_LIMIT)),
@@ -53,20 +56,23 @@ public final class ThermalSuits {
             suit(ModArmorSetItems.ajro_helmet, ModArmorSetItems.ajro_plate,
                     ModArmorSetItems.ajro_legs, ModArmorSetItems.ajro_boots, sealed(2)),
             suit(ModArmorItems.rpa_helmet, ModArmorItems.rpa_plate,
-                    ModArmorItems.rpa_legs, ModArmorItems.rpa_boots, sealed(2)),
+                    ModArmorItems.rpa_legs, ModArmorItems.rpa_boots, sealedWithAirConditioner(2)),
             suit(ModArmorItems.ncrpa_helmet, ModArmorItems.ncrpa_plate,
                     ModArmorItems.ncrpa_legs, ModArmorItems.ncrpa_boots, sealed(2)),
             suit(ModArmorItems.bj_helmet, ModArmorItems.bj_plate,
                     ModArmorItems.bj_legs, ModArmorItems.bj_boots, sealed(2)),
             suit(ModArmorItems.dns_helmet, ModArmorItems.dns_plate,
-                    ModArmorItems.dns_legs, ModArmorItems.dns_boots, sealed(2)),
+                    ModArmorItems.dns_legs, ModArmorItems.dns_boots, sealedWithEquilibriumAirConditioner(2)),
             suit(ModArmorSetItems.fau_helmet, ModArmorSetItems.fau_plate,
-                    ModArmorSetItems.fau_legs, ModArmorSetItems.fau_boots, sealed(2))
+                    ModArmorSetItems.fau_legs, ModArmorSetItems.fau_boots, sealedWithEquilibriumAirConditioner(2)),
+
+            suit(ModArmorSetItems.euphemium_helmet, ModArmorSetItems.euphemium_plate,
+                    ModArmorSetItems.euphemium_legs, ModArmorSetItems.euphemium_boots, euphemium())
     );
 
-    private static final EquipmentSlot[] ARMOR_SLOTS = {
+    public static final List<EquipmentSlot> ARMOR_SLOTS = List.of(
             EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
-    };
+    );
 
     private ThermalSuits() {}
 
@@ -75,6 +81,13 @@ public final class ThermalSuits {
             if (suit.isWornBy(player)) return Optional.of(suit.profile());
         }
         if (wearsFullArmor(player)) return Optional.of(SuitProfile.otherFullSet());
+        return Optional.empty();
+    }
+
+    public static Optional<SuitProfile> profileOfPiece(Item item) {
+        for (ThermalSuit suit : SUITS) {
+            if (suit.contains(item)) return Optional.of(suit.profile());
+        }
         return Optional.empty();
     }
 

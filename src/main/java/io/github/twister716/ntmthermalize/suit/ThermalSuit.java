@@ -19,4 +19,8 @@ public record ThermalSuit(
                 && player.getItemBySlot(EquipmentSlot.LEGS).is(leggings.get())
                 && player.getItemBySlot(EquipmentSlot.FEET).is(boots.get());
     }
+
+    public boolean contains(Item item) {
+        return item == helmet.get() || item == chestplate.get() || item == leggings.get() || item == boots.get();
+    }
 }

@@ -1,0 +1,12 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.air_conditioner",
+  "input_items": [
+    { "ingredient": "#c:mechanisms/weaponsteel", "count": 2 },
+    { "ingredient": "#c:bolts/dura_steel", "count": 2 },
+    { "ingredient": "hbm:circuit_basic" }
+  ],
+  "output_items": ["ntmthermalize:air_conditioner"],
+  "duration": 200,
+  "power": 500
+}

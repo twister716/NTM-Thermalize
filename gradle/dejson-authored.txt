@@ -1,1 +1,3 @@
 # Hand-written files in folders Dejson owns: exact paths, or a folder ending in a slash.
+data/ntmthermalize/recipe/assembly_machine/
+data/ntmthermalize/recipe/chemical_plant/

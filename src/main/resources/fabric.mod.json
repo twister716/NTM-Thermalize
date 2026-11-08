@@ -12,6 +12,9 @@
     "entrypoints": {
         "golemcore:entry": [
             "io.github.twister716.ntmthermalize.NTMThermalizeEntry"
+        ],
+        "client": [
+            "io.github.twister716.ntmthermalize.platform.fabric.FabricClientInit"
         ]
     },
     "depends": {

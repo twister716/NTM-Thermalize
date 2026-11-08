@@ -1,1 +1,3 @@
 # Classes holding Dejson declarations (registration chains, crafting recipes), one per line, in initialisation order.
+io.github.twister716.ntmthermalize.item.ThermalItems
+io.github.twister716.ntmthermalize.recipe.ThermalRecipes

@@ -1,0 +1,16 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.thermal_equilibrium_air_conditioner",
+  "input_items": [
+    { "ingredient": "#c:mechanisms/saturnite", "count": 2 },
+    { "ingredient": "#c:plates/desh", "count": 2 },
+    { "ingredient": "#c:plates/aluminium", "count": 4 },
+    { "ingredient": "hbm:circuit_chip_bismoid", "count": 2 }
+  ],
+  "input_fluids": [
+    { "type": "hbm:cryogel", "amount": 1000 }
+  ],
+  "output_items": ["ntmthermalize:thermal_equilibrium_air_conditioner"],
+  "duration": 200,
+  "power": 1000
+}
