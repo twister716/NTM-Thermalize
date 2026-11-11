@@ -7,6 +7,7 @@
   "item.ntmthermalize.ferrouranium_cooling_cladding": "クリオ加工-フェロウランの冷却被覆",
   "item.ntmthermalize.air_conditioner": "空調",
   "item.ntmthermalize.thermal_equilibrium_air_conditioner": "熱均衡空調",
+  "item.ntmthermalize.room_thermometer": "室温計",
   "tooltip.ntmthermalize.temperature": "体温 %s",
   "tooltip.ntmthermalize.radiation": "放射線耐性 %s",
   "tooltip.ntmthermalize.air_conditioner": "蒸れを防ぐ（電動フル装備が必要）",
@@ -20,5 +21,11 @@
   "key.category.ntmthermalize.general": "NTM: Thermalize",
   "key.ntmthermalize.toggle_air_conditioner": "空調の切り替え",
   "message.ntmthermalize.air_conditioner.on": "空調 オン",
-  "message.ntmthermalize.air_conditioner.off": "空調 オフ"
+  "message.ntmthermalize.air_conditioner.off": "空調 オフ",
+  "message.ntmthermalize.room_temperature": "室温：",
+  "temperature.ntmthermalize.icy": "極寒",
+  "temperature.ntmthermalize.cold": "寒い",
+  "temperature.ntmthermalize.neutral": "常温",
+  "temperature.ntmthermalize.warm": "暑い",
+  "temperature.ntmthermalize.hot": "極暑"
 }

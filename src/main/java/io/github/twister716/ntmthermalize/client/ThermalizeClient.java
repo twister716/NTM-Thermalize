@@ -1,6 +1,7 @@
 package io.github.twister716.ntmthermalize.client;
 
 import dev.golem.core.client.ClientTicks;
+import dev.golem.core.client.ItemModelProperties;
 import dev.golem.core.client.KeyMappings;
 import dev.golem.core.client.Tooltips;
 import dev.golem.core.net.GolemNetwork;
@@ -20,6 +21,7 @@ public final class ThermalizeClient {
                 "key.ntmthermalize.toggle_air_conditioner", GLFW.GLFW_KEY_G, "general");
         ClientTicks.onEndTick(ThermalizeClient::tick);
         Tooltips.onItemTooltip(FullSetBonusTooltip::addLines);
+        ItemModelProperties.includeItems("hbm", "model_state", NTMThermalize.MOD_ID);
     }
 
     private static void tick() {

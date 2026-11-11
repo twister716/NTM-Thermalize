@@ -18,5 +18,8 @@ public final class ThermalRecipes {
         shaped(NS, "crafting/copper_cooling_cladding", NS + ":copper_cooling_cladding",
                 rows("DCD", "CPC", "DCD"),
                 "D", "hbm:ducttape", "C", "#c:plates/copper", "P", "#c:plates/iron");
+        shaped(NS, "crafting/room_thermometer", NS + ":room_thermometer",
+                rows(" M ", "PTP", " P "),
+                "M", "hbm:nugget_mercury_tiny", "T", "toughasnails:thermometer", "P", "#c:plates/steel");
     }
 }

@@ -2,6 +2,7 @@ package io.github.twister716.ntmthermalize.item;
 
 import com.hbm.creativetabs.HbmTab;
 import com.hbm.registration.Presets;
+import dev.golem.core.dejson.Models;
 import dev.golem.core.registry.DeferredRegister;
 import dev.golem.core.registry.Registrar;
 import dev.golem.core.registry.RegistryObject;
@@ -31,9 +32,13 @@ public final class ThermalItems {
     public static final RegistryObject<AirConditioner> THERMAL_EQUILIBRIUM_AIR_CONDITIONER =
             airConditioner("thermal_equilibrium_air_conditioner", true, 25);
 
+    public static final RegistryObject<RoomThermometer> ROOM_THERMOMETER = roomThermometer();
+
     private ThermalItems() {}
 
-    public static void init() {}
+    public static void init() {
+        RoomThermometer.init();
+    }
 
     private static RegistryObject<ThermalCladding> cladding(String name, double temperature) {
         return REG.item(name, p -> new ThermalCladding(temperature, p), p -> p.stacksTo(1))
@@ -45,6 +50,19 @@ public final class ThermalItems {
                                                                  long powerPerSecond) {
         return REG.item(name, p -> new AirConditioner(equilibrium, powerPerSecond, p), p -> p.stacksTo(1))
                 .transform(Presets.sprite())
+                .tab(HbmTab.CONSUMABLES);
+    }
+
+    private static RegistryObject<RoomThermometer> roomThermometer() {
+        String texture = NTMThermalize.MOD_ID + ":items/room_thermometer";
+        Models.Group needles = Models.group().and("", Models.generated(texture));
+        for (int model = 1; model < RoomThermometer.NEEDLE_POSITIONS; model++) {
+            String suffix = String.format("_%02d", RoomThermometer.positionOfModel(model));
+            needles = needles.and(suffix, Models.generated(texture + suffix));
+        }
+        Models.Group allNeedles = needles;
+        return REG.item("room_thermometer", RoomThermometer::new, p -> p.stacksTo(1))
+                .icon(item -> item.models(allNeedles).selects("hbm:model_state"))
                 .tab(HbmTab.CONSUMABLES);
     }
 }

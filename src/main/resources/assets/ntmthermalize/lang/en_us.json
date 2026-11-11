@@ -7,6 +7,7 @@
   "item.ntmthermalize.ferrouranium_cooling_cladding": "Cryo-Coated Ferrouranium Cooling Cladding",
   "item.ntmthermalize.air_conditioner": "Air Conditioner",
   "item.ntmthermalize.thermal_equilibrium_air_conditioner": "Thermal Equilibrium Air Conditioner",
+  "item.ntmthermalize.room_thermometer": "Room Thermometer",
   "tooltip.ntmthermalize.temperature": "Body temperature %s",
   "tooltip.ntmthermalize.radiation": "Radiation resistance %s",
   "tooltip.ntmthermalize.air_conditioner": "Prevents stuffiness (requires full electric set)",
@@ -20,5 +21,11 @@
   "key.category.ntmthermalize.general": "NTM: Thermalize",
   "key.ntmthermalize.toggle_air_conditioner": "Toggle Air Conditioner",
   "message.ntmthermalize.air_conditioner.on": "Air conditioner ON",
-  "message.ntmthermalize.air_conditioner.off": "Air conditioner OFF"
+  "message.ntmthermalize.air_conditioner.off": "Air conditioner OFF",
+  "message.ntmthermalize.room_temperature": "Room temperature: ",
+  "temperature.ntmthermalize.icy": "Icy",
+  "temperature.ntmthermalize.cold": "Cold",
+  "temperature.ntmthermalize.neutral": "Neutral",
+  "temperature.ntmthermalize.warm": "Warm",
+  "temperature.ntmthermalize.hot": "Hot"
 }
