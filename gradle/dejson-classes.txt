@@ -2,3 +2,5 @@
 io.github.twister716.ntmthermalize.item.ThermalItems
 io.github.twister716.ntmthermalize.recipe.ThermalRecipes
 io.github.twister716.ntmthermalize.compat.space.SpaceTags
+io.github.twister716.ntmthermalize.block.ThermalBlocks
+io.github.twister716.ntmthermalize.room.RoomTags

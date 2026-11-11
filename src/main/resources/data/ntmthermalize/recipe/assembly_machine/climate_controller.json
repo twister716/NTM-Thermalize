@@ -1,0 +1,14 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.climate_controller",
+  "input_items": [
+    { "ingredient": "ntmthermalize:room_cooler" },
+    { "ingredient": "ntmthermalize:room_heater" },
+    { "ingredient": "ntmthermalize:thermal_equilibrium_air_conditioner" },
+    { "ingredient": "#c:ingots/any_plastic", "count": 2 },
+    { "ingredient": "#c:ingots/any_resistant_alloy", "count": 2 }
+  ],
+  "output_items": ["ntmthermalize:climate_controller"],
+  "duration": 200,
+  "power": 100
+}

@@ -14,7 +14,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import toughasnails.api.temperature.IPositionalTemperatureModifier;
 import toughasnails.api.temperature.TemperatureLevel;
 
@@ -26,8 +26,7 @@ import toughasnails.api.temperature.TemperatureLevel;
  */
 public final class SpaceClimate implements IPositionalTemperatureModifier {
 
-    static final double VACUUM_PRESSURE = 0.001;
-
+    private static final double VACUUM_PRESSURE = 0.001;
     private static final String NAMESPACE = "ntmspace";
     private static final String ORBIT = "orbit";
     private static final String HOT_IN_VACUUM = "moho";
@@ -59,11 +58,6 @@ public final class SpaceClimate implements IPositionalTemperatureModifier {
     static boolean isVacuum(Level level) {
         String body = bodyOf(level);
         return body != null && isVacuum(level, body);
-    }
-
-    static TemperatureLevel vacuumTemperature(Level level) {
-        String body = bodyOf(level);
-        return body != null ? vacuumTemperature(body) : TemperatureLevel.ICY;
     }
 
     private static boolean isVacuum(Level level, String body) {

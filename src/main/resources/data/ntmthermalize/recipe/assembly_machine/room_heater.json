@@ -1,0 +1,14 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.room_heater",
+  "input_items": [
+    { "ingredient": "ntmthermalize:air_conditioner" },
+    { "ingredient": "hbm:coil_tungsten", "count": 3 },
+    { "ingredient": "hbm:motor" },
+    { "ingredient": "minecraft:iron_bars", "count": 4 },
+    { "ingredient": "#c:plates/steel", "count": 4 }
+  ],
+  "output_items": ["ntmthermalize:room_heater"],
+  "duration": 200,
+  "power": 100
+}

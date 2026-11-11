@@ -7,6 +7,7 @@ import dev.golem.core.world.CompatTooltipContext;
 import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -27,29 +28,31 @@ public class ThermalCladding extends ItemArmorMod {
     @Override
     protected void appendCompatHoverText(ItemStack stack, CompatTooltipContext context,
                                          List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(temperatureText());
+        tooltip.add(Component.translatable("tooltip.ntmthermalize.temperature", signed(temperature))
+                .withStyle(temperatureColor()));
         double radiation = ArmorDataMaps.cladding(this);
-        if (radiation > 0) tooltip.add(radiationText(radiation));
+        if (radiation > 0) {
+            tooltip.add(Component.translatable("tooltip.ntmthermalize.radiation", signed(radiation))
+                    .withStyle(ChatFormatting.YELLOW));
+        }
         tooltip.add(Component.empty());
         super.appendCompatHoverText(stack, context, tooltip, flag);
     }
 
+    /** One line on the armor, as NTM's own claddings show it: the name, then every effect in brackets. */
     @Override
     public void addArmorModDescription(List<Component> tooltip, ItemStack stack, ItemStack armor) {
-        tooltip.add(Component.literal("  ").append(stack.getHoverName()).withStyle(temperatureColor()));
-        tooltip.add(Component.literal("    ").append(temperatureText()));
+        MutableComponent effects = Component.translatable("tooltip.ntmthermalize.temperature", signed(temperature));
         double radiation = ArmorDataMaps.cladding(this);
-        if (radiation > 0) tooltip.add(Component.literal("    ").append(radiationText(radiation)));
+        if (radiation > 0) {
+            effects.append(", ").append(Component.translatable("tooltip.ntmthermalize.radiation.armor", signed(radiation)));
+        }
+        tooltip.add(Component.literal("  ").append(stack.getHoverName()).append(" (").append(effects).append(")")
+                .withStyle(temperatureColor()));
     }
 
-    private Component temperatureText() {
-        String value = (temperature > 0 ? "+" : "") + temperature;
-        return Component.translatable("tooltip.ntmthermalize.temperature", value).withStyle(temperatureColor());
-    }
-
-    private static Component radiationText(double radiation) {
-        return Component.translatable("tooltip.ntmthermalize.radiation", "+" + radiation)
-                .withStyle(ChatFormatting.YELLOW);
+    private static String signed(double value) {
+        return (value > 0 ? "+" : "") + value;
     }
 
     private ChatFormatting temperatureColor() {

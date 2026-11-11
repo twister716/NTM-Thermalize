@@ -42,8 +42,9 @@ public class AirConditioner extends ItemArmorMod {
 
     @Override
     public void addArmorModDescription(List<Component> tooltip, ItemStack stack, ItemStack armor) {
-        tooltip.add(Component.literal("  ").append(stack.getHoverName()).withStyle(ChatFormatting.AQUA));
-        tooltip.add(Component.literal("    ").append(powerText()));
+        tooltip.add(Component.literal("  ").append(stack.getHoverName())
+                .append(" (").append(Component.translatable("tooltip.ntmthermalize.power", powerPerSecond)).append(")")
+                .withStyle(ChatFormatting.AQUA));
     }
 
     @Override

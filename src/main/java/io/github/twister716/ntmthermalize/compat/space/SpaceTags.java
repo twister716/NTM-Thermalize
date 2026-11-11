@@ -14,7 +14,5 @@ public final class SpaceTags {
         Tags.of("worldgen/biome", NS, "colder_biomes")
                 .optional("ntmspace:laythe_polar", "ntmspace:duna_polar", "ntmspace:duna_polar_hills")
                 .register();
-        Tags.of("block", NS, "room_heat_sources").register();
-        Tags.of("block", NS, "room_cooling_sources").register();
     }
 }

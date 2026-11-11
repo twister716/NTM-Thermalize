@@ -1,0 +1,18 @@
+{
+  "type": "hbm:assembly_machine",
+  "name": "ass.ntmthermalize.room_cooler",
+  "input_items": [
+    { "ingredient": "ntmthermalize:air_conditioner" },
+    { "ingredient": "#c:dusts/ice", "count": 3 },
+    { "ingredient": "hbm:motor" },
+    { "ingredient": "#c:pipes/steel", "count": 2 },
+    { "ingredient": "minecraft:iron_bars", "count": 4 },
+    { "ingredient": "#c:plates/steel", "count": 4 }
+  ],
+  "input_fluids": [
+    { "type": "hbm:cryogel", "amount": 100 }
+  ],
+  "output_items": ["ntmthermalize:room_cooler"],
+  "duration": 200,
+  "power": 100
+}

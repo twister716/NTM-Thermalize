@@ -24,15 +24,11 @@ import toughasnails.api.temperature.TemperatureLevel;
  */
 public class RoomThermometer extends CompatItem implements ModelState {
 
-    /** The needle's position, from 0 (icy) to 16 (hot); every fourth one is a temperature level. */
+    /** The needle's position; see {@link ThermometerNeedle}. */
     public static final GolemComponent<Integer> NEEDLE =
             GolemComponent.of(NTMThermalize.MOD_ID, "room_thermometer_needle", Codec.INT);
     public static final GolemComponent<Integer> TARGET =
             GolemComponent.of(NTMThermalize.MOD_ID, "room_thermometer_target", Codec.INT);
-
-    public static final int NEEDLE_POSITIONS = 17;
-    private static final int STEPS_PER_LEVEL = 4;
-    private static final int NEUTRAL_POSITION = TemperatureLevel.NEUTRAL.ordinal() * STEPS_PER_LEVEL;
 
     private static final int INFO_ID = 71601;
     private static final int UPDATE_TICKS = 20;
@@ -45,18 +41,9 @@ public class RoomThermometer extends CompatItem implements ModelState {
 
     public static void init() {}
 
-    /**
-     * The needle position the item model with index {@code model} shows. The model of the upright neutral needle
-     * comes first because it is the item's own.
-     */
-    public static int positionOfModel(int model) {
-        return (model + NEUTRAL_POSITION) % NEEDLE_POSITIONS;
-    }
-
     @Override
     public int modelState(ItemStack stack) {
-        int position = NEEDLE.getOr(stack, NEUTRAL_POSITION);
-        return (position - NEUTRAL_POSITION + NEEDLE_POSITIONS) % NEEDLE_POSITIONS;
+        return ThermometerNeedle.modelOfPosition(NEEDLE.getOr(stack, ThermometerNeedle.NEUTRAL));
     }
 
     @Override
@@ -75,8 +62,8 @@ public class RoomThermometer extends CompatItem implements ModelState {
 
     private static void read(ItemStack stack, ServerPlayer player) {
         TemperatureLevel temperature = RoomTemperature.at(player);
-        int target = temperature.ordinal() * STEPS_PER_LEVEL;
-        if (TARGET.getOr(stack, NEUTRAL_POSITION) != target) TARGET.set(stack, target);
+        int target = temperature.ordinal() * ThermometerNeedle.STEPS_PER_LEVEL;
+        if (TARGET.getOr(stack, ThermometerNeedle.NEUTRAL) != target) TARGET.set(stack, target);
 
         GolemNetwork.sendToPlayer(player, PlayerInformPayload.CODEC, PlayerInformPayload.of(INFO_ID, DISPLAY_MILLIS,
                 ChatFormatting.RESET,
@@ -86,8 +73,8 @@ public class RoomThermometer extends CompatItem implements ModelState {
     }
 
     private static void swingNeedle(ItemStack stack) {
-        int needle = NEEDLE.getOr(stack, NEUTRAL_POSITION);
-        int target = TARGET.getOr(stack, NEUTRAL_POSITION);
+        int needle = NEEDLE.getOr(stack, ThermometerNeedle.NEUTRAL);
+        int target = TARGET.getOr(stack, ThermometerNeedle.NEUTRAL);
         if (needle != target) NEEDLE.set(stack, needle + Integer.signum(target - needle));
     }
 

@@ -13,12 +13,15 @@ import com.hbm.items.ModArmorSetBItems;
 import com.hbm.items.ModArmorSetItems;
 import com.hbm.items.ModGearItems;
 import dev.golem.core.world.Armors;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import org.jspecify.annotations.Nullable;
 
 public final class ThermalSuits {
 
@@ -77,19 +80,44 @@ public final class ThermalSuits {
 
     private ThermalSuits() {}
 
+    /** Suits by helmet and profiles by piece, built on first use: the items exist only once registration is over. */
+    private static volatile @Nullable Map<Item, ThermalSuit> byHelmet;
+    private static volatile @Nullable Map<Item, SuitProfile> byPiece;
+
     public static Optional<SuitProfile> profileOf(Player player) {
-        for (ThermalSuit suit : SUITS) {
-            if (suit.isWornBy(player)) return Optional.of(suit.profile());
-        }
+        ThermalSuit suit = byHelmet().get(player.getItemBySlot(EquipmentSlot.HEAD).getItem());
+        if (suit != null && suit.isWornBy(player)) return Optional.of(suit.profile());
         if (wearsFullArmor(player)) return Optional.of(SuitProfile.otherFullSet());
         return Optional.empty();
     }
 
     public static Optional<SuitProfile> profileOfPiece(Item item) {
-        for (ThermalSuit suit : SUITS) {
-            if (suit.contains(item)) return Optional.of(suit.profile());
+        return Optional.ofNullable(byPiece().get(item));
+    }
+
+    private static Map<Item, ThermalSuit> byHelmet() {
+        Map<Item, ThermalSuit> map = byHelmet;
+        if (map == null) {
+            Map<Item, ThermalSuit> built = new HashMap<>();
+            for (ThermalSuit suit : SUITS) built.put(suit.helmet().get(), suit);
+            byHelmet = map = built;
         }
-        return Optional.empty();
+        return map;
+    }
+
+    private static Map<Item, SuitProfile> byPiece() {
+        Map<Item, SuitProfile> map = byPiece;
+        if (map == null) {
+            Map<Item, SuitProfile> built = new HashMap<>();
+            for (ThermalSuit suit : SUITS) {
+                for (Supplier<? extends Item> piece : List.of(suit.helmet(), suit.chestplate(), suit.leggings(),
+                        suit.boots())) {
+                    built.putIfAbsent(piece.get(), suit.profile());
+                }
+            }
+            byPiece = map = built;
+        }
+        return map;
     }
 
     private static boolean wearsFullArmor(Player player) {
